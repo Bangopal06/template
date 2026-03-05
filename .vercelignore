@@ -1,6 +1,4 @@
-# Documentation
-README.md
-SETUP.md
-
-# Development files
-.env.example
+.env
+.env.local
+node_modules
+.next
