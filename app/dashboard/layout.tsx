@@ -3,6 +3,9 @@ import { verifySession } from '@/lib/session'
 import { logoutAction } from '@/app/actions/auth-actions'
 import prisma from '@/lib/prisma'
 import Image from 'next/image'
+import FloatingChat from '@/components/FloatingChat'
+import InstallPrompt from '@/components/InstallPrompt'
+import InstallButton from '@/components/InstallButton'
 
 export default async function DashboardLayout({
   children,
@@ -21,6 +24,9 @@ export default async function DashboardLayout({
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Install Prompt */}
+      <InstallPrompt />
+      
       <nav className="bg-white border-b shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
@@ -28,6 +34,11 @@ export default async function DashboardLayout({
               <h1 className="text-xl font-semibold text-gray-800">Dashboard Template</h1>
             </div>
             <div className="flex items-center gap-4">
+              {/* Install Button */}
+              <InstallButton />
+
+              <div className="h-8 w-px bg-gray-300"></div>
+
               {/* Profile Avatar */}
               <div className="flex items-center gap-3">
                 {profile?.fotoProfil ? (
@@ -135,6 +146,9 @@ export default async function DashboardLayout({
         </aside>
         <main className="flex-1 overflow-auto">{children}</main>
       </div>
+      
+      {/* Floating AI Chat Widget */}
+      <FloatingChat />
     </div>
   )
 }
